@@ -8,10 +8,10 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/propic_view"
         android:layout_width="146dp"
         android:layout_height="139dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/title_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,79 +19,81 @@
         app:srcCompat="@mipmap/logo_app" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/title_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Librapp"
         android:textSize="36sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/username_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/propic_view" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        android:onClick="checkLogin"
+        app:layout_constraintBottom_toTopOf="@+id/password_view"
+        app:layout_constraintStart_toEndOf="@+id/username_view"
+        app:layout_constraintTop_toBottomOf="@+id/username_view" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/registration_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Registrazione"
-        app:layout_constraintBottom_toTopOf="@+id/imageView6"
+        app:layout_constraintBottom_toTopOf="@+id/admin_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/password_view" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/free_access_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Accesso Libero"
+        android:onClick="openFreeAccess"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toBottomOf="@+id/admin_view" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/admin_view"
         android:layout_width="55dp"
         android:layout_height="54dp"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/free_access_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/free_access_button"
+        app:layout_constraintTop_toBottomOf="@+id/registration_button"
         app:srcCompat="@mipmap/tasto_admin" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/username_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/login_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/title_view" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/password_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/registration_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/login_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

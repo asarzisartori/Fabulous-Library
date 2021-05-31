@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="32dp"
+    tools:context=".Image_button_frag">
+
+    <ImageButton
+        android:id="@+id/fa_book_button"
+        android:layout_width="75dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="200dp"
+        android:src="@mipmap/fa_book_foreground"
+        app:layout_constraintEnd_toStartOf="@+id/fa_audiobook_button"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageButton
+        android:id="@+id/fa_audiobook_button"
+        android:layout_width="75dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="60dp"
+        android:src="@mipmap/fa_audiobook_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageButton
+        android:id="@+id/fa_ciak_button"
+        android:layout_width="75dp"
+        android:layout_height="65dp"
+        android:src="@mipmap/fa_ciak_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fa_scientistbook_button"
+        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fa_book_button"
+        app:layout_constraintVertical_bias="0.401" />
+
+    <ImageButton
+        android:id="@+id/fa_scientistbook_button"
+        android:layout_width="75dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="60dp"
+        android:src="@mipmap/fa_scientistbook_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fa_audiobook_button"
+        app:layout_constraintVertical_bias="0.398" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="287dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="92dp"
+        android:text="Prego, scegliere la categoria che si desidera consultare"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
