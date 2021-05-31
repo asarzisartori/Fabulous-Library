@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
 import java.util.regex.Pattern
 
 class MainActivity : AppCompatActivity() {
@@ -15,15 +15,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun checkLogin (v: View?) {
-        val email = username_view.getText().toString()
+        val email = findViewById<EditText>(R.id.username_view).getText().toString()
         if (!isNotValidEmail(email)) {
-            username_view.setError(getString(R.string.invalid_email))
-            Toast.makeText(applicationContext, "Pommerda", Toast.LENGTH_SHORT).show()
+            findViewById<EditText>(R.id.username_view).setError(getString(R.string.invalid_email))
+            Toast.makeText(applicationContext, "Prova", Toast.LENGTH_SHORT).show()
         }
 
-        val pass = password_view.getText().toString()
+        val pass = findViewById<EditText>(R.id.password_view).getText().toString()
         if (!isNotValidPassword(pass)) {
-            password_view.setError(getString(R.string.invalid_password))
+            findViewById<EditText>(R.id.password_view).setError(getString(R.string.invalid_password))
         }
     }
 
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openFreeAccess(v: View){
-        val intent = Intent(this@MainActivity, FreeAccess::class.java)
+        val intent = Intent(this@MainActivity, FreeAccessActivity::class.java)
         startActivity(intent)
     }
 
