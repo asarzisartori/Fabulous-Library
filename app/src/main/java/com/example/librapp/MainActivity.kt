@@ -47,5 +47,9 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this@MainActivity, FreeAccessActivity::class.java)
         startActivity(intent)
     }
+    fun openSignIn(v: View){
+        val intentsign = Intent(this@MainActivity, Sign_In_Activity::class.java)
+        startActivity(intentsign)
+    }
 
 }

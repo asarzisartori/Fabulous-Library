@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/logo_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Librapp">
+        <activity android:name=".Sign_In_Activity"></activity>
         <activity android:name=".FreeAccessActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>

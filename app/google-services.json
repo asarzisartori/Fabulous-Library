@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "103939126705",
-    "project_id": "librapp-9b2c0",
-    "storage_bucket": "librapp-9b2c0.appspot.com"
+    "project_number": "768960183648",
+    "firebase_url": "https://librapp-ff657-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "librapp-ff657",
+    "storage_bucket": "librapp-ff657.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:103939126705:android:e8e26425ba5bf2f9267990",
+        "mobilesdk_app_id": "1:768960183648:android:5119ffb93052651bd67205",
         "android_client_info": {
           "package_name": "com.example.librapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "103939126705-lrhv1ck59jdv1a2t3ogr0n5pmojgt3te.apps.googleusercontent.com",
+          "client_id": "768960183648-ddvmll30kufg9l87lf5b0q0qlok9vddo.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC_fEJ0grNLOw0qwke4lRbtFColwAyl5Eo"
+          "current_key": "AIzaSyA3WkPF9b8rrLLXzhOBINwN5T2-0Ngbg64"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "103939126705-lrhv1ck59jdv1a2t3ogr0n5pmojgt3te.apps.googleusercontent.com",
+              "client_id": "768960183648-ddvmll30kufg9l87lf5b0q0qlok9vddo.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
