@@ -73,13 +73,18 @@ class MainActivity : AppCompatActivity() {
         return matcher.matches()
     }
 
-    fun openFreeAccess(v: View){
+    fun openFreeAccess (v: View) {
         val intent = Intent(this@MainActivity, FreeAccessActivity::class.java)
         startActivity(intent)
     }
-    fun openSignIn(v: View){
-        val intentsign = Intent(this@MainActivity, Sign_In_Activity::class.java)
-        startActivity(intentsign)
+    fun openSignIn (v: View) {
+        val intent = Intent(this@MainActivity, SignInActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun openAdminSection (v: View) {
+        val intent = Intent(this@MainActivity, AdminSectionActivity::class.java)
+        startActivity(intent)
     }
 
 }

@@ -5,4 +5,10 @@
     <string name="invalid_password">Password non valida!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="prodotti">
+        <item>Libro</item>
+        <item>Audiolibro</item>
+        <item>Film</item>
+        <item>Rivista Scientifica</item>
+    </string-array>
 </resources>
