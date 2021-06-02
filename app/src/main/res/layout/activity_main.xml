@@ -70,6 +70,7 @@
         app:layout_constraintBottom_toTopOf="@+id/free_access_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        android:onClick="openAdminSection"
         app:layout_constraintStart_toEndOf="@+id/free_access_button"
         app:layout_constraintTop_toBottomOf="@+id/registration_button"
         app:srcCompat="@drawable/admin_button"

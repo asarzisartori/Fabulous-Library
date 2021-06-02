@@ -14,6 +14,5 @@ class WorkTableAdmin_frag : Fragment() {
         return inflater.inflate(R.layout.fragment_work_table_admin_frag, container, false)
 
         val spinner = view?.findViewById<Spinner>(R.id.spinner_products)
-        ArrayAdapter<CharSequence> ciao = ArrayAdapter.c
     }
 }

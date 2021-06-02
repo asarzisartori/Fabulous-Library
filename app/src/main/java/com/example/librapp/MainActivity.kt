@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun isNotValidPassword(pass: String): Boolean {
-        return if (pass != null && pass.length >= 8) {
+        return if (pass.length >= 8) {
            true
         } else {
             false
