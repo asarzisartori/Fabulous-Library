@@ -72,7 +72,9 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/free_access_button"
         app:layout_constraintTop_toBottomOf="@+id/registration_button"
-        app:srcCompat="@mipmap/tasto_admin" />
+        app:srcCompat="@drawable/admin_button"
+        android:background="@color/white"
+        android:scaleType="fitXY"/>
 
     <EditText
         android:id="@+id/username_view"

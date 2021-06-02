@@ -13,43 +13,39 @@ import java.util.regex.Pattern
 
 class Sign_In_Activity : AppCompatActivity() {
 
-
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin_layout)
 
     }
 
-    fun Registrate(v: View) {
+    fun Registrate (v: View) {
 
-        val name = findViewById<EditText>(R.id.nameField).getText().toString()
-        val email = findViewById<EditText>(R.id.emailField).getText().toString()
-        val pass = findViewById<EditText>(R.id.passwordText).getText().toString()
+        val name = findViewById<EditText>(R.id.nameField).text.toString()
+        val email = findViewById<EditText>(R.id.emailField).text.toString()
+        val pass = findViewById<EditText>(R.id.passwordText).text.toString()
 
         if(name.isEmpty()){
-            findViewById<EditText>(R.id.nameField).setError(getString(R.string.invalid_username))
+            findViewById<EditText>(R.id.nameField).error = getString(R.string.invalid_username)
             return
         }
         if(pass.isEmpty()){
-            findViewById<EditText>(R.id.passwordText).setError(getString(R.string.invalid_password))
+            findViewById<EditText>(R.id.passwordText).error = getString(R.string.invalid_password)
             return
         }
 
         if (!isNotValidPassword(pass)) {
-            findViewById<EditText>(R.id.passwordText).setError(getString(R.string.invalid_password))
+            findViewById<EditText>(R.id.passwordText).error = getString(R.string.invalid_password)
             return
         }
 
         if(email.isEmpty()) {
-            findViewById<EditText>(R.id.emailField).setError(getString(R.string.invalid_email))
+            findViewById<EditText>(R.id.emailField).error = getString(R.string.invalid_email)
             return
         }
 
         if (!isNotValidEmail(email)) {
-            findViewById<EditText>(R.id.emailField).setError(getString(R.string.invalid_email))
+            findViewById<EditText>(R.id.emailField).error = getString(R.string.invalid_email)
             return
         }
 
@@ -75,15 +71,14 @@ class Sign_In_Activity : AppCompatActivity() {
                 }
 
             }
-
-
     }
+
     private fun isNotValidPassword(pass: String): Boolean {
-        return if (pass != null && pass.length >= 8) { true } else { false }
+        return if (pass.length >= 8) { true } else { false }
     }
+
     private fun isNotValidEmail(email: String): Boolean {
-        val EMAIL_PATTERN = ("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
+        val EMAIL_PATTERN = ("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
         val pattern = Pattern.compile(EMAIL_PATTERN)
         val matcher = pattern.matcher(email)
         return matcher.matches()
