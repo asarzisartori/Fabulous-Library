@@ -13,14 +13,14 @@ import java.util.regex.Pattern
 
 class Sign_In_Activity : AppCompatActivity() {
 
-    private lateinit var mAuth: FirebaseAuth
+
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin_layout)
-        mAuth = FirebaseAuth.getInstance()
+
     }
 
     fun Registrate(v: View) {
@@ -53,27 +53,28 @@ class Sign_In_Activity : AppCompatActivity() {
             return
         }
 
+        val Users = FirebaseDatabase.getInstance().getReference("Users").child("nome").get()
+           if (Users.equals(name)){
+               Toast.makeText(applicationContext, "User already exists", Toast.LENGTH_LONG).show()
+               return
+           }
+
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass)
-            .addOnCompleteListener(OnCompleteListener<AuthResult> {
-                task ->  if(task.isSuccessful)  {
-                val user = User(name,email,pass)
-                FirebaseDatabase.getInstance().getReference("Users")
-                    .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
-                    .setValue(user)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val user = User(name, email, pass)
+                    FirebaseDatabase.getInstance().getReference("Users")
+                        .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+                        .setValue(user)
 
 
                     Toast.makeText(applicationContext, "Success", Toast.LENGTH_LONG).show()
-            }
-                else {
+                } else {
                     Toast.makeText(applicationContext, "Error", Toast.LENGTH_LONG).show()
+                }
+
             }
-
-            })
-
-
-
-
 
 
     }
