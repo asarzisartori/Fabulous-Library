@@ -11,6 +11,7 @@
         android:theme="@style/Theme.Librapp">
         <activity android:name=".Sign_In_Activity"></activity>
         <activity android:name=".FreeAccessActivity"></activity>
+        <activity android:name=".LoggedActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

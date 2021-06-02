@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import java.util.regex.Pattern
 
 class MainActivity : AppCompatActivity() {
@@ -14,22 +16,50 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
+
+
     fun checkLogin (v: View?) {
-        val email = findViewById<EditText>(R.id.username_view).getText().toString()
+      val email = findViewById<EditText>(R.id.username_view).getText().toString()
+        val pass = findViewById<EditText>(R.id.password_view).getText().toString()
+
+        if(email.isEmpty()){
+            findViewById<EditText>(R.id.username_view).error = getString(R.string.invalid_username)
+            return
+        }
+
+        if(pass.isEmpty()){
+            findViewById<EditText>(R.id.password_view).error = getString(R.string.invalid_password)
+            return
+        }
+
         if (!isNotValidEmail(email)) {
             findViewById<EditText>(R.id.username_view).setError(getString(R.string.invalid_email))
             Toast.makeText(applicationContext, "Prova", Toast.LENGTH_SHORT).show()
+            return
         }
 
-        val pass = findViewById<EditText>(R.id.password_view).getText().toString()
+
         if (!isNotValidPassword(pass)) {
             findViewById<EditText>(R.id.password_view).setError(getString(R.string.invalid_password))
+            return
         }
+
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, pass)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val intentLog = Intent(this@MainActivity, LoggedActivity::class.java)
+                    startActivity(intentLog)
+                    Toast.makeText(applicationContext, "LogInSuccess", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(applicationContext, "ErrorLoggingIn", Toast.LENGTH_LONG).show()
+                }
+
+            }
     }
 
     private fun isNotValidPassword(pass: String): Boolean {
         return if (pass != null && pass.length >= 8) {
-            true
+           true
         } else {
             false
         }
