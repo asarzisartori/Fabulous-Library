@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 
@@ -15,30 +16,50 @@ class Image_button_frag : Fragment() {
 
         view.findViewById<ImageButton>(R.id.fa_book_button).setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.fragment_container_buttonview, List_book_frag())
-            transaction?.disallowAddToBackStack()
+            if(requireActivity() is FreeAccessActivity) {
+                transaction?.replace(R.id.fragment_container_buttonview, List_book_frag())
+            }
+            if (requireActivity() is LoggedActivity) {
+                transaction?.replace(R.id.fragment_container_userlogged, List_book_frag())
+            }
             transaction?.commit()
         }
 
         view.findViewById<ImageButton>(R.id.fa_audiobook_button).setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.fragment_container_buttonview, List_audiobook_frag())
-            transaction?.disallowAddToBackStack()
+            if(requireActivity() is FreeAccessActivity) {
+                transaction?.replace(R.id.fragment_container_buttonview, List_audiobook_frag())
+            }
+            if (requireActivity() is LoggedActivity) {
+                transaction?.replace(R.id.fragment_container_userlogged, List_audiobook_frag())
+            }
             transaction?.commit()
         }
 
         view.findViewById<ImageButton>(R.id.fa_ciak_button).setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.fragment_container_buttonview, List_ciack_frag())
-            transaction?.disallowAddToBackStack()
+            if(requireActivity() is FreeAccessActivity) {
+                transaction?.replace(R.id.fragment_container_buttonview, List_ciack_frag())
+            }
+            if (requireActivity() is LoggedActivity) {
+                transaction?.replace(R.id.fragment_container_userlogged, List_ciack_frag())
+            }
             transaction?.commit()
         }
 
         view.findViewById<ImageButton>(R.id.fa_scientistbook_button).setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.fragment_container_buttonview, List_sciencebook_frag())
-            transaction?.disallowAddToBackStack()
+            if(requireActivity() is FreeAccessActivity) {
+                transaction?.replace(R.id.fragment_container_buttonview, List_sciencebook_frag())
+            }
+            if (requireActivity() is LoggedActivity) {
+                transaction?.replace(R.id.fragment_container_userlogged, List_sciencebook_frag())
+            }
             transaction?.commit()
+        }
+
+        view.findViewById<Button>(R.id.button_Back).setOnClickListener {
+            requireActivity().onBackPressed()
         }
 
         return view
