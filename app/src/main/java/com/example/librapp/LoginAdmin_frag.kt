@@ -18,11 +18,10 @@ class LoginAdmin_frag : Fragment() {
             if (username == "admin" && password == "password") {
                 val transaction = activity?.supportFragmentManager?.beginTransaction()
                 transaction?.replace(R.id.fragment_container_admin, WorkTableAdmin_frag())
-                transaction?.disallowAddToBackStack()
                 transaction?.commit()
                 Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(context, "Failure in Login", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Failure in Logging In", Toast.LENGTH_SHORT).show()
             }
         }
 

@@ -20,7 +20,6 @@ class LoggedActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loggedactivity)
 
-        val fragment_container = findViewById<FragmentContainerView>(R.id.fragment_container_userlogged)
         val spinner = findViewById<Spinner>(R.id.spinner)
         spinner!!.setOnItemSelectedListener(this)
         val array_adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, list_of_items)
