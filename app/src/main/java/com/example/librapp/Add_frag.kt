@@ -26,30 +26,45 @@ class Add_frag : Fragment() {
             if(titolo.isEmpty()){
                 view.findViewById<EditText>(R.id.titleA).error = getString(R.string.invalid_username)
 
-            }
-            if(autore.isEmpty()){
-                view.findViewById<EditText>(R.id.authorA).error = getString(R.string.invalid_username)
-            }
-            if(genere.isEmpty()){
-                view.findViewById<EditText>(R.id.genereA).error = getString(R.string.invalid_username)
-            }
-            if(tipologia.isEmpty()){
-                view.findViewById<EditText>(R.id.typoA).error = getString(R.string.invalid_username)
-            }
-            if(descrizione.isEmpty()){
-                view.findViewById<EditText>(R.id.descriptionA).error = getString(R.string.invalid_username)
-            }
-            val item = Item(titolo, autore, genere, tipologia, descrizione)
-            FirebaseDatabase.getInstance().getReference("Item").child(tipologia).child(titolo).setValue(item)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Toast.makeText(context, "Item Successfully uploaded", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
-                    }
+            } else {
+                if (autore.isEmpty()) {
+                    view.findViewById<EditText>(R.id.authorA).error =
+                        getString(R.string.invalid_username)
+                }else {
+                    if (genere.isEmpty()) {
+                        view.findViewById<EditText>(R.id.genereA).error =
+                            getString(R.string.invalid_username)
+                    }else {
+                        if (tipologia.isEmpty()) {
+                            view.findViewById<EditText>(R.id.typoA).error =
+                                getString(R.string.invalid_username)
+                        } else {
+                            if (descrizione.isEmpty()) {
+                                view.findViewById<EditText>(R.id.descriptionA).error =
+                                    getString(R.string.invalid_username)
+                            }else {
+                                val item = Item(titolo, autore, genere, tipologia, descrizione)
+                                FirebaseDatabase.getInstance().getReference("Item").child(titolo)
+                                    .setValue(item)
+                                    .addOnCompleteListener { task ->
+                                        if (task.isSuccessful) {
+                                            Toast.makeText(
+                                                context,
+                                                "Item Successfully uploaded",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        } else {
+                                            Toast.makeText(context, "Error", Toast.LENGTH_SHORT)
+                                                .show()
+                                        }
 
+                                    }
+                            }
+                            }
+                        }
                 }
-        }
+                }
+            }
 
         return view
     }

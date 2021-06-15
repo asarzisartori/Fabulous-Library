@@ -1,3 +1,12 @@
 package com.example.librapp
 
-data class User(val nome: String, val email: String, val password: String)
+class User(var nome: String, var email: String, var password: String) {
+
+    constructor(): this("", "","")
+
+
+    }
+
+
+
+
