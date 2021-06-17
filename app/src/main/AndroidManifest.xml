@@ -12,7 +12,7 @@
         <activity android:name=".AdminSectionActivity"></activity>
         <activity android:name=".SignInActivity" />
         <activity android:name=".FreeAccessActivity" />
-        <activity android:name=".LoggedActivity"></activity>
+        <activity android:name=".UserLoggedActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

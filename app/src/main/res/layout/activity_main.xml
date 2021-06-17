@@ -11,9 +11,8 @@
         android:id="@+id/propic_view"
         android:layout_width="146dp"
         android:layout_height="139dp"
-        app:layout_constraintBottom_toTopOf="@+id/title_view"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/logo_app" />
@@ -22,12 +21,11 @@
         android:id="@+id/title_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Librapp"
+        android:layout_marginTop="16dp"
+        android:text="@string/librapp"
         android:textSize="36sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/username_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/propic_view" />
 
@@ -35,69 +33,64 @@
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:layout_marginTop="96dp"
         android:onClick="checkLogin"
-        app:layout_constraintBottom_toTopOf="@+id/password_view"
-        app:layout_constraintStart_toEndOf="@+id/username_view"
-        app:layout_constraintTop_toBottomOf="@+id/username_view" />
+        android:text="@string/login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_view" />
 
     <Button
         android:id="@+id/registration_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrazione"
+        android:layout_marginTop="64dp"
         android:onClick="openSignIn"
-        app:layout_constraintBottom_toTopOf="@+id/admin_view"
+        android:text="@string/registrazione"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_view" />
 
     <Button
         android:id="@+id/free_access_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Accesso Libero"
         android:onClick="openFreeAccess"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/admin_view" />
+        android:text="@string/accesso_libero"
+        app:layout_constraintBaseline_toBaselineOf="@+id/registration_button"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/admin_view"
         android:layout_width="55dp"
         android:layout_height="54dp"
-        app:layout_constraintBottom_toTopOf="@+id/free_access_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        android:onClick="openAdminSection"
-        app:layout_constraintStart_toEndOf="@+id/free_access_button"
-        app:layout_constraintTop_toBottomOf="@+id/registration_button"
-        app:srcCompat="@drawable/admin_button"
         android:background="@color/white"
-        android:scaleType="fitXY"/>
+        android:onClick="openAdminSection"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/admin_button" />
 
     <EditText
         android:id="@+id/username_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="@string/email"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/login_button"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_view" />
+        app:layout_constraintTop_toBottomOf="@+id/title_view"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/password_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/registration_button"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_button" />
+        app:layout_constraintTop_toBottomOf="@+id/username_view"
+        android:autofillHints="" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import java.util.regex.Pattern
 
 class MainActivity : AppCompatActivity() {
@@ -47,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, pass)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val intentLog = Intent(this@MainActivity, LoggedActivity::class.java)
+                    val intentLog = Intent(this@MainActivity, UserLoggedActivity::class.java)
                     startActivity(intentLog)
                     Toast.makeText(applicationContext, "LogInSuccess", Toast.LENGTH_LONG).show()
                 } else {

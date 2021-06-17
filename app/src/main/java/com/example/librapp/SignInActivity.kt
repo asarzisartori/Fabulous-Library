@@ -1,5 +1,6 @@
 package com.example.librapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -66,6 +67,8 @@ class SignInActivity : AppCompatActivity() {
 
 
                     Toast.makeText(applicationContext, "Success", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
                 } else {
                     Toast.makeText(applicationContext, "Error", Toast.LENGTH_LONG).show()
                 }

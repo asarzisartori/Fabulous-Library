@@ -19,7 +19,7 @@ class Image_button_frag : Fragment() {
             if(requireActivity() is FreeAccessActivity) {
                 transaction?.replace(R.id.fragment_container_buttonview, List_book_frag())
             }
-            if (requireActivity() is LoggedActivity) {
+            if (requireActivity() is UserLoggedActivity) {
                 transaction?.replace(R.id.fragment_container_userlogged, List_book_frag())
             }
             transaction?.commit()
@@ -30,7 +30,7 @@ class Image_button_frag : Fragment() {
             if(requireActivity() is FreeAccessActivity) {
                 transaction?.replace(R.id.fragment_container_buttonview, List_audiobook_frag())
             }
-            if (requireActivity() is LoggedActivity) {
+            if (requireActivity() is UserLoggedActivity) {
                 transaction?.replace(R.id.fragment_container_userlogged, List_audiobook_frag())
             }
             transaction?.commit()
@@ -41,7 +41,7 @@ class Image_button_frag : Fragment() {
             if(requireActivity() is FreeAccessActivity) {
                 transaction?.replace(R.id.fragment_container_buttonview, List_ciack_frag())
             }
-            if (requireActivity() is LoggedActivity) {
+            if (requireActivity() is UserLoggedActivity) {
                 transaction?.replace(R.id.fragment_container_userlogged, List_ciack_frag())
             }
             transaction?.commit()
@@ -52,7 +52,7 @@ class Image_button_frag : Fragment() {
             if(requireActivity() is FreeAccessActivity) {
                 transaction?.replace(R.id.fragment_container_buttonview, List_sciencebook_frag())
             }
-            if (requireActivity() is LoggedActivity) {
+            if (requireActivity() is UserLoggedActivity) {
                 transaction?.replace(R.id.fragment_container_userlogged, List_sciencebook_frag())
             }
             transaction?.commit()

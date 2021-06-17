@@ -12,13 +12,13 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 
 
-class LoggedActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+class UserLoggedActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
-    val list_of_items = arrayOf("Home", "Profilo", "Prenotazioni")
+    private val list_of_items = arrayOf("Home", "Profilo", "Prenotazioni")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_loggedactivity)
+        setContentView(R.layout.activity_userloggedactivity)
 
         val spinner = findViewById<Spinner>(R.id.spinner)
         spinner!!.setOnItemSelectedListener(this)

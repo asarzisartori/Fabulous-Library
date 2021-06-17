@@ -5,6 +5,12 @@
     <string name="invalid_password">Password non valida!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="librapp">Librapp</string>
+    <string name="login">Login</string>
+    <string name="registrazione">Registrazione</string>
+    <string name="accesso_libero">Accesso Libero</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
     <string-array name="prodotti">
         <item>Libro</item>
         <item>Audiolibro</item>
