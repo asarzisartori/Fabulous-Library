@@ -28,7 +28,7 @@ class List_ciack_frag : Fragment() {
         val view = inflater.inflate(R.layout.fragment_list_ciack_frag, container, false)
         var listView = view.findViewById<ListView>(R.id.list_view_ciak)
         val datab : FirebaseDatabase = FirebaseDatabase.getInstance()
-        val reference : DatabaseReference = datab.getReference("Item")
+        val reference : DatabaseReference = datab.getReference("Item/Film")
 
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

@@ -30,7 +30,7 @@ class ItemAdapter(private val context: Context?, val data: ArrayList<Item>) : Ba
             val itemTipologia = newView.findViewById<TextView>(R.id.Tipologia)
 
             itemTitolo.text = data[position].titolo
-            itemAutore.text = data[position].autore
+            itemAutore.text = data[position].descrizione
            itemTipologia.text = data[position].tipologia
 
 

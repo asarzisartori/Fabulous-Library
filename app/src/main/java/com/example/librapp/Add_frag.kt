@@ -44,7 +44,7 @@ class Add_frag : Fragment() {
                                     getString(R.string.invalid_username)
                             }else {
                                 val item = Item(titolo, autore, genere, tipologia, descrizione)
-                                FirebaseDatabase.getInstance().getReference("Item").child(titolo)
+                                FirebaseDatabase.getInstance().getReference("Item").child(tipologia).child(titolo)
                                     .setValue(item)
                                     .addOnCompleteListener { task ->
                                         if (task.isSuccessful) {
