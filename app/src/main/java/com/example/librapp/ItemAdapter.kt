@@ -8,6 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 
 class ItemAdapter(private val context: Context?, val data: ArrayList<Item>) : BaseAdapter() {
+
     override fun getCount(): Int {
         return data.size
     }
@@ -21,20 +22,22 @@ class ItemAdapter(private val context: Context?, val data: ArrayList<Item>) : Ba
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
+
         var newView = convertView
         if(convertView == null)
             newView = LayoutInflater.from(context).inflate(R.layout.item_adapter, parent,false)
-        if(newView!= null){
-           val itemTitolo = newView.findViewById<TextView>(R.id.Titolo)
+
+        if(newView!= null) {
+            val itemTitolo = newView.findViewById<TextView>(R.id.Titolo)
             val itemAutore = newView.findViewById<TextView>(R.id.Autore)
             val itemTipologia = newView.findViewById<TextView>(R.id.Tipologia)
 
             itemTitolo.text = data[position].titolo
-            itemAutore.text = data[position].descrizione
-           itemTipologia.text = data[position].tipologia
-
+            itemAutore.text = data[position].autore
+            itemTipologia.text = data[position].tipologia
 
         }
+
         return newView
     }
 

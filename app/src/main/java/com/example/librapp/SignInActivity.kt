@@ -26,11 +26,12 @@ class SignInActivity : AppCompatActivity() {
         val email = findViewById<EditText>(R.id.emailField).text.toString()
         val pass = findViewById<EditText>(R.id.passwordText).text.toString()
 
-        if(name.isEmpty()){
+        if(name.isEmpty()) {
             findViewById<EditText>(R.id.nameField).error = getString(R.string.invalid_username)
             return
         }
-        if(pass.isEmpty()){
+
+        if(pass.isEmpty()) {
             findViewById<EditText>(R.id.passwordText).error = getString(R.string.invalid_password)
             return
         }
@@ -58,14 +59,10 @@ class SignInActivity : AppCompatActivity() {
 
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass)
-            .addOnCompleteListener { task ->
+                .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val user = User(name, email, pass)
-                    FirebaseDatabase.getInstance().getReference("Users")
-                        .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
-                        .setValue(user)
-
-
+                    FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().currentUser?.uid.toString()).setValue(user)
                     Toast.makeText(applicationContext, "Success", Toast.LENGTH_LONG).show()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
