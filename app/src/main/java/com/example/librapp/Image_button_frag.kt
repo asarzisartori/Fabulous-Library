@@ -17,7 +17,7 @@ class Image_button_frag : Fragment() {
         view.findViewById<ImageButton>(R.id.fa_book_button).setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
             if(requireActivity() is FreeAccessActivity) {
-                transaction?.replace(R.id.fragment_container_buttonview, List_book_frag())
+                transaction?.replace(R.id.fragment_container_freeaccess, List_book_frag())
             }
             if (requireActivity() is UserLoggedActivity) {
                 transaction?.replace(R.id.fragment_container_userlogged, List_book_frag())
@@ -28,7 +28,7 @@ class Image_button_frag : Fragment() {
         view.findViewById<ImageButton>(R.id.fa_audiobook_button).setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
             if(requireActivity() is FreeAccessActivity) {
-                transaction?.replace(R.id.fragment_container_buttonview, List_audiobook_frag())
+                transaction?.replace(R.id.fragment_container_freeaccess, List_audiobook_frag())
             }
             if (requireActivity() is UserLoggedActivity) {
                 transaction?.replace(R.id.fragment_container_userlogged, List_audiobook_frag())
@@ -39,7 +39,7 @@ class Image_button_frag : Fragment() {
         view.findViewById<ImageButton>(R.id.fa_ciak_button).setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
             if(requireActivity() is FreeAccessActivity) {
-                transaction?.replace(R.id.fragment_container_buttonview, List_ciack_frag())
+                transaction?.replace(R.id.fragment_container_freeaccess, List_ciack_frag())
             }
             if (requireActivity() is UserLoggedActivity) {
                 transaction?.replace(R.id.fragment_container_userlogged, List_ciack_frag())
@@ -50,7 +50,7 @@ class Image_button_frag : Fragment() {
         view.findViewById<ImageButton>(R.id.fa_scientistbook_button).setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
             if(requireActivity() is FreeAccessActivity) {
-                transaction?.replace(R.id.fragment_container_buttonview, List_sciencebook_frag())
+                transaction?.replace(R.id.fragment_container_freeaccess, List_sciencebook_frag())
             }
             if (requireActivity() is UserLoggedActivity) {
                 transaction?.replace(R.id.fragment_container_userlogged, List_sciencebook_frag())

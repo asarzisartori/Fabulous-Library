@@ -32,6 +32,18 @@ class List_sciencebook_frag : Fragment() {
 
         })
 
+        listView.setOnItemClickListener { arg0, arg1, position, arg3 ->
+            if(requireActivity() is UserLoggedActivity) {
+                val transaction = activity?.supportFragmentManager?.beginTransaction()
+                transaction?.replace(R.id.fragment_container_userlogged, ProductWindowLogged_frag())
+                transaction?.commit()
+            } else {
+                val transaction = activity?.supportFragmentManager?.beginTransaction()
+                transaction?.replace(R.id.fragment_container_freeaccess, ProductWindowNoLogged_frag())
+                transaction?.commit()
+            }
+        }
+
         return view
     }
 
