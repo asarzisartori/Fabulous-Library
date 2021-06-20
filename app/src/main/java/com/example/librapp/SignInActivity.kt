@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import java.util.regex.Pattern
 
 class SignInActivity : AppCompatActivity() {
@@ -20,18 +20,21 @@ class SignInActivity : AppCompatActivity() {
 
     }
 
-    fun Registrate (v: View) {
-
+    fun Registrate(v: View) {
         val name = findViewById<EditText>(R.id.nameField).text.toString()
         val email = findViewById<EditText>(R.id.emailField).text.toString()
         val pass = findViewById<EditText>(R.id.passwordText).text.toString()
 
-        if(name.isEmpty()) {
+        if (name.isEmpty()) {
             findViewById<EditText>(R.id.nameField).error = getString(R.string.invalid_username)
             return
         }
+        if (checkName(name)== true) {
+            findViewById<EditText>(R.id.nameField).error = "Username già in utilizzo"
+            return
+        }
 
-        if(pass.isEmpty()) {
+        if (pass.isEmpty()) {
             findViewById<EditText>(R.id.passwordText).error = getString(R.string.invalid_password)
             return
         }
@@ -41,7 +44,7 @@ class SignInActivity : AppCompatActivity() {
             return
         }
 
-        if(email.isEmpty()) {
+        if (email.isEmpty()) {
             findViewById<EditText>(R.id.emailField).error = getString(R.string.invalid_email)
             return
         }
@@ -52,17 +55,19 @@ class SignInActivity : AppCompatActivity() {
         }
 
         val Users = FirebaseDatabase.getInstance().getReference("Users").child("nome").get()
-           if (Users.equals(name)){
-               Toast.makeText(applicationContext, "User already exists", Toast.LENGTH_LONG).show()
-               return
-           }
+        if (Users.equals(name)) {
+            Toast.makeText(applicationContext, "User already exists", Toast.LENGTH_LONG).show()
+            return
+        }
 
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass)
-                .addOnCompleteListener { task ->
+            .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val user = User(name, email, pass)
-                    FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().currentUser?.uid.toString()).setValue(user)
+                    FirebaseDatabase.getInstance().getReference("Users")
+                        .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+                        .setValue(user)
                     Toast.makeText(applicationContext, "Success", Toast.LENGTH_LONG).show()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
@@ -74,13 +79,44 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun isNotValidPassword(pass: String): Boolean {
-        return if (pass.length >= 8) { true } else { false }
+        return if (pass.length >= 8) {
+            true
+        } else {
+            false
+        }
     }
 
     private fun isNotValidEmail(email: String): Boolean {
-        val EMAIL_PATTERN = ("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
+        val EMAIL_PATTERN =
+            ("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
         val pattern = Pattern.compile(EMAIL_PATTERN)
         val matcher = pattern.matcher(email)
         return matcher.matches()
+    }
+
+
+    private fun checkName(name: String): Boolean {
+        var checked = false
+        val db: DatabaseReference = FirebaseDatabase.getInstance().getReference("Users")
+        db.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (userSnap: DataSnapshot in snapshot.getChildren()) {
+                    val iterUser = userSnap.getValue(User::class.java)
+                    val username = iterUser!!.nome
+                    if (name == username){
+                      checked = true
+                    Toast.makeText(applicationContext, "Trovato", Toast.LENGTH_LONG).show()
+
+                    }
+                    else {
+                        checked =  false
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
+        return checked
     }
 }

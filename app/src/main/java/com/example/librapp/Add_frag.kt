@@ -43,7 +43,7 @@ class Add_frag : Fragment() {
                                 view.findViewById<EditText>(R.id.descriptionA).error =
                                     getString(R.string.invalid_username)
                             }else {
-                                val item = Item(titolo, autore, genere, tipologia, descrizione)
+                                val item = Item(titolo, autore, genere, tipologia, descrizione,"False","Nobody")
                                 FirebaseDatabase.getInstance().getReference("Item").child(tipologia).child(titolo)
                                     .setValue(item)
                                     .addOnCompleteListener { task ->
