@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/logo_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Librapp">
-        <activity android:name=".AdminSectionActivity"></activity>
+        <activity android:name=".ProductWindowLoggedActivity"></activity>
+        <activity android:name=".ProductWindowNoLoggedActivity" />
+        <activity android:name=".AdminSectionActivity" />
         <activity android:name=".SignInActivity" />
         <activity android:name=".FreeAccessActivity" />
-        <activity android:name=".UserLoggedActivity"></activity>
+        <activity android:name=".UserLoggedActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

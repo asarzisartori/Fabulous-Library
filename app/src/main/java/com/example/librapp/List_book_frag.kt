@@ -1,12 +1,12 @@
 package com.example.librapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
+import android.widget.AdapterView
 import android.widget.ListView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.database.*
 
@@ -34,15 +34,20 @@ class List_book_frag : Fragment() {
 
         })
 
-        listView.setOnItemClickListener { arg0, arg1, position, arg3 ->
+        listView.setOnItemClickListener {
+                parent: AdapterView<*>?, view: View, position: Int, id: Long ->
             if(requireActivity() is UserLoggedActivity) {
-                val transaction = activity?.supportFragmentManager?.beginTransaction()
-                transaction?.replace(R.id.fragment_container_userlogged, ProductWindowLogged_frag())
-                transaction?.commit()
+                val item = listView.getAdapter().getItem(position)
+                val intent = Intent(activity, ProductWindowLoggedActivity::class.java)
+                intent.putExtra("Titolo", item.toString())
+                intent.putExtra("Tipologia", "Libro")
+                startActivity(intent)
             } else {
-                val transaction = activity?.supportFragmentManager?.beginTransaction()
-                transaction?.replace(R.id.fragment_container_freeaccess, ProductWindowNoLogged_frag())
-                transaction?.commit()
+                val item = listView.getAdapter().getItem(position)
+                val intent = Intent(activity, ProductWindowNoLoggedActivity::class.java)
+                intent.putExtra("Titolo", item.toString())
+                intent.putExtra("Tipologia", "Libro")
+                startActivity(intent)
             }
         }
 

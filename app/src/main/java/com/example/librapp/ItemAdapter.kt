@@ -14,7 +14,7 @@ class ItemAdapter(private val context: Context?, val data: ArrayList<Item>) : Ba
     }
 
     override fun getItem(position: Int): Any {
-        return position
+        return data[position].titolo
     }
 
     override fun getItemId(position: Int): Long {
@@ -40,5 +40,4 @@ class ItemAdapter(private val context: Context?, val data: ArrayList<Item>) : Ba
 
         return newView
     }
-
 }
