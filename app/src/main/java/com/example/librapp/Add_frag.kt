@@ -28,8 +28,7 @@ class Add_frag : Fragment() {
 
             } else {
                 if (autore.isEmpty()) {
-                    view.findViewById<EditText>(R.id.authorA).error =
-                        getString(R.string.invalid_username)
+                    view.findViewById<EditText>(R.id.authorA).error = getString(R.string.invalid_username)
                 }else {
                     if (genere.isEmpty()) {
                         view.findViewById<EditText>(R.id.genereA).error =
@@ -64,6 +63,8 @@ class Add_frag : Fragment() {
                         }
                 }
                 }
+
+
             }
 
         return view
