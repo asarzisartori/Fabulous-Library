@@ -7,5 +7,4 @@ data class Item(val titolo: String, val autore: String, val genere: String, val 
         return "Item(titolo='$titolo', autore='$autore', genere='$genere', tipologia='$tipologia', descrizione='$descrizione', prenotato='$prenotato', user='$user')"
     }
 
-
 }

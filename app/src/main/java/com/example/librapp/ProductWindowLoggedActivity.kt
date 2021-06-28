@@ -1,5 +1,6 @@
 package com.example.librapp
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -19,15 +20,29 @@ class ProductWindowLoggedActivity : AppCompatActivity() {
         val dataTitolo = intent.getStringExtra("Titolo").toString()
         val uid = FirebaseAuth.getInstance().currentUser?.uid.toString()
         val dataTipologia = intent.getStringExtra("Tipologia").toString()
-        FirebaseDatabase.getInstance().getReference("Item").child(dataTipologia).child(dataTitolo).addValueEventListener(object :
-            ValueEventListener {
+        FirebaseDatabase.getInstance().getReference("Item").child(dataTipologia).child(dataTitolo).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val i = snapshot.getValue(Item::class.java)
                 val titolo = i?.titolo
                 val autore = i?.autore
                 val tipologia = i?.tipologia
                 val descrizione = i?.descrizione
-                val prenotato = i?.prenotato
+                var prenotato_state = ""
+
+                if ((i?.prenotato).equals("True")) {
+                    prenotato_state = "Non disponibile"
+                }  else {
+                    prenotato_state = "Disponibile"
+                }
+
+                val check = findViewById<TextView>(R.id.textView_State)
+                check.text = prenotato_state
+                if (prenotato_state.equals("Non disponibile")) {
+                    check.setTextColor(Color.RED)
+                } else {
+                    check.setTextColor(Color.GREEN)
+                }
+
                 findViewById<TextView>(R.id.TV_Titolo).text = titolo
                 findViewById<TextView>(R.id.TV_Autore).text = autore
                 findViewById<TextView>(R.id.TV_Tipologia).text = tipologia
@@ -37,8 +52,9 @@ class ProductWindowLoggedActivity : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) { }
 
         })
+
         findViewById<Button>(R.id.button_Prenota).setOnClickListener {
-            FirebaseDatabase.getInstance().getReference("Item").child(dataTipologia).child(dataTitolo).addListenerForSingleValueEvent(object: ValueEventListener{
+            FirebaseDatabase.getInstance().getReference("Item").child(dataTipologia).child(dataTitolo).addListenerForSingleValueEvent(object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val itemprenotato = snapshot.getValue(Item::class.java)
                     val prenotato = itemprenotato?.prenotato.toString()
@@ -50,7 +66,6 @@ class ProductWindowLoggedActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, "Prenotazione effettuata", Toast.LENGTH_SHORT).show()
 
                     } else {
-
                         Toast.makeText(applicationContext, "Item non disponibile", Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -72,7 +87,6 @@ class ProductWindowLoggedActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, "Restituzione effettuata", Toast.LENGTH_SHORT).show()
 
                     } else {
-
                         Toast.makeText(applicationContext, "Item non in possesso", Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -83,7 +97,6 @@ class ProductWindowLoggedActivity : AppCompatActivity() {
 
             })
         }
-
 
     }
 }
