@@ -11,6 +11,7 @@
     <string name="accesso_libero">Accesso Libero</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="Tipologia_Spinner">Tipologia</string>
     <string-array name="prodotti">
         <item>Libro</item>
         <item>Audiolibro</item>

@@ -36,13 +36,12 @@
         android:inputType="textPersonName"
         android:hint="Genere" />
 
-    <EditText
-        android:id="@+id/typoA"
+    <Spinner
+        android:id="@+id/spinner_typo"
+        android:spinnerMode="dialog"
+        android:prompt="@string/Tipologia_Spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Tipo" />
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/descriptionA"

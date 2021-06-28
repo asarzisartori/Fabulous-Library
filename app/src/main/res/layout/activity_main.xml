@@ -47,21 +47,26 @@
         android:onClick="openSignIn"
         android:text="@string/registrazione"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/free_access_button"
         app:layout_constraintTop_toBottomOf="@+id/password_view" />
 
     <Button
         android:id="@+id/free_access_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
         android:onClick="openFreeAccess"
         android:text="@string/accesso_libero"
         app:layout_constraintBaseline_toBaselineOf="@+id/registration_button"
+        app:layout_constraintEnd_toStartOf="@+id/registration_button"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/admin_view"
-        android:layout_width="55dp"
-        android:layout_height="54dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:onClick="openAdminSection"
         android:scaleType="fitXY"
@@ -74,23 +79,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_view"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/title_view" />
 
     <EditText
         android:id="@+id/password_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_view"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/username_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

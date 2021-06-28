@@ -5,10 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".Booked_frag">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ListView
+        android:id="@+id/listview_Booked"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Prenotazioni" />
-
+        android:layout_height="match_parent" />
 </FrameLayout>

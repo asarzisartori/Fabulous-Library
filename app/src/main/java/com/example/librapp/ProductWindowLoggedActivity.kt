@@ -27,6 +27,7 @@ class ProductWindowLoggedActivity : AppCompatActivity() {
                 val autore = i?.autore
                 val tipologia = i?.tipologia
                 val descrizione = i?.descrizione
+                val prenotato = i?.prenotato
                 findViewById<TextView>(R.id.TV_Titolo).text = titolo
                 findViewById<TextView>(R.id.TV_Autore).text = autore
                 findViewById<TextView>(R.id.TV_Tipologia).text = tipologia
@@ -54,9 +55,7 @@ class ProductWindowLoggedActivity : AppCompatActivity() {
                     }
                 }
 
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
+                override fun onCancelled(error: DatabaseError) { }
 
             })
         }

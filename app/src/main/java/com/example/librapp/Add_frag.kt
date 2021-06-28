@@ -5,68 +5,86 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
+import android.widget.*
+import androidx.core.view.get
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import com.google.firebase.database.FirebaseDatabase
 
-class Add_frag : Fragment() {
+class Add_frag : Fragment(), AdapterView.OnItemSelectedListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-       val view = inflater.inflate(R.layout.fragment_add_frag, container, false)
+
+        val view = inflater.inflate(R.layout.fragment_add_frag, container, false)
+        val list_of_items = arrayOf("Libro", "Audiolibro", "Film", "Scienza")
+        val spinner = view?.findViewById<Spinner>(R.id.spinner_typo)
+        spinner!!.setOnItemSelectedListener(this)
+        spinner.adapter = activity?.let { ArrayAdapter(it, R.layout.support_simple_spinner_dropdown_item, list_of_items) }
 
         view.findViewById<Button>(R.id.button_AddProduct).setOnClickListener {
-            val titolo = view.findViewById<EditText>(R.id.titleA).text.toString()
-            val autore = view.findViewById<EditText>(R.id.authorA).text.toString()
-            val genere = view.findViewById<EditText>(R.id.genereA).text.toString()
-            val tipologia = view.findViewById<EditText>(R.id.typoA).text.toString()
-            val descrizione = view.findViewById<EditText>(R.id.descriptionA).text.toString()
-            if(titolo.isEmpty()){
-                view.findViewById<EditText>(R.id.titleA).error = getString(R.string.invalid_username)
 
+            val item_titolo = view.findViewById<EditText>(R.id.titleA).text.toString()
+            val item_autore = view.findViewById<EditText>(R.id.authorA).text.toString()
+            val item_genere = view.findViewById<EditText>(R.id.genereA).text.toString()
+            var item_tipologia = getValue()
+            val item_descrizione = view.findViewById<EditText>(R.id.descriptionA).text.toString()
+
+            if(item_titolo.isEmpty()){
+                view.findViewById<EditText>(R.id.titleA).error = getString(R.string.invalid_username)
             } else {
-                if (autore.isEmpty()) {
+                if (item_autore.isEmpty()) {
                     view.findViewById<EditText>(R.id.authorA).error = getString(R.string.invalid_username)
-                }else {
-                    if (genere.isEmpty()) {
+                } else {
+                    if (item_genere.isEmpty()) {
                         view.findViewById<EditText>(R.id.genereA).error =
-                            getString(R.string.invalid_username)
-                    }else {
-                        if (tipologia.isEmpty()) {
-                            view.findViewById<EditText>(R.id.typoA).error =
                                 getString(R.string.invalid_username)
                         } else {
-                            if (descrizione.isEmpty()) {
+                            if (item_descrizione.isEmpty()) {
                                 view.findViewById<EditText>(R.id.descriptionA).error =
-                                    getString(R.string.invalid_username)
-                            }else {
-                                val item = Item(titolo, autore, genere, tipologia, descrizione,"False","Nobody")
-                                FirebaseDatabase.getInstance().getReference("Item").child(tipologia).child(titolo)
-                                    .setValue(item)
-                                    .addOnCompleteListener { task ->
-                                        if (task.isSuccessful) {
-                                            Toast.makeText(
-                                                context,
-                                                "Item Successfully uploaded",
-                                                Toast.LENGTH_SHORT
-                                            ).show()
-                                        } else {
-                                            Toast.makeText(context, "Error", Toast.LENGTH_SHORT)
-                                                .show()
-                                        }
-
+                                        getString(R.string.invalid_username)
+                            } else {
+                                    val item = Item(item_titolo, item_autore, item_genere, item_tipologia, item_descrizione, "False", "Nobody")
+                                    FirebaseDatabase.getInstance().getReference("Item").child(item_tipologia).child(item_titolo).setValue(item).addOnCompleteListener {
+                                        task ->
+                                                if (task.isSuccessful) {
+                                                    Toast.makeText(context, "Item Successfully uploaded", Toast.LENGTH_SHORT).show()
+                                                } else {
+                                                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                                                }
                                     }
-                            }
+                                }
                             }
                         }
-                }
-                }
-
-
             }
+
+        }
 
         return view
     }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) { }
+    override fun onNothingSelected(parent: AdapterView<*>?) { }
+
+    fun getValue(): String {
+        var tmp : String = ""
+        val confronto = view?.findViewById<Spinner>(R.id.spinner_typo)?.getSelectedItemPosition().toString()
+        if (confronto.equals("0")) {
+            tmp = "Libro"
+        } else {
+            if (confronto.equals("1")) {
+                tmp = "Audiolibro"
+            } else {
+                if (confronto.equals("2")) {
+                    tmp = "Film"
+                } else {
+                    if (confronto.equals("3")) {
+                        tmp = "Scienza"
+                    }
+                }
+            }
+        }
+
+        return tmp
+    }
+
 }
