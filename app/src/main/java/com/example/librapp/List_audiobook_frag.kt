@@ -11,11 +11,7 @@ import com.google.firebase.database.*
 
 class List_audiobook_frag : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_list_audiobook_frag, container, false)
         var listView = view.findViewById<ListView>(R.id.list_view_audiobook)
@@ -52,26 +48,6 @@ class List_audiobook_frag : Fragment() {
                 startActivity(intent)
             }
         }
-
-            /*listView.setOnItemClickListener { parent: AdapterView<*>?, view: View, position: Int, id: Long ->
-                if(requireActivity() is UserLoggedActivity) {
-                    //val obj: Any = listView.getAdapter().getItem(position)
-                    //val str = obj.toString()
-                    Toast.makeText(context, "You have Clicked " + listView.adapter.getView(position), Toast.LENGTH_SHORT).show()
-                    val transaction = activity?.supportFragmentManager?.beginTransaction()
-                    transaction?.replace(R.id.fragment_container_userlogged, ProductWindowLogged_frag())
-                    transaction?.commit()
-                } else {
-                    //val obj: Any = listView.getAdapter().getItem(position)
-                    //val str = obj.toString()
-                    Toast.makeText(context, "You have Clicked " + FirebaseDatabase.getInstance().getReference("item/Audiolibro")., Toast.LENGTH_SHORT).show()
-                    val transaction = activity?.supportFragmentManager?.beginTransaction()
-                    transaction?.replace(R.id.fragment_container_freeaccess, ProductWindowNoLogged_frag())
-                    transaction?.commit()
-                }
-            }
-
-             */
 
         return view
     }

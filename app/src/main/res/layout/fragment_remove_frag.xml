@@ -3,34 +3,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#ffffff"
+    android:clickable="true"
     android:orientation="vertical"
-    tools:context=".Remove_frag" >
+    tools:context=".Remove_frag">
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Rimozione" />
+        android:layout_height="85dp"
+        android:text="Remove Panel"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="italic" />
 
     <EditText
         android:id="@+id/titleR"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Titolo" />
-
-    <EditText
-        android:id="@+id/tipoR"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Tipologia"
+        android:hint="Title"
         android:inputType="textPersonName" />
+
+    <Spinner
+        android:id="@+id/spinner_typo"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:prompt="@string/Tipologia_Spinner"
+        android:spinnerMode="dialog" />
 
     <Button
         android:id="@+id/button_RemoveProduct"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rimuovi" />
+        android:layout_gravity="center"
+        android:text="Remove" />
+
 </LinearLayout>

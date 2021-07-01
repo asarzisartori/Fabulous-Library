@@ -35,7 +35,7 @@ class List_ciack_frag : Fragment() {
         })
 
         listView.setOnItemClickListener {
-                parent: AdapterView<*>?, view: View, position: Int, id: Long ->
+            parent: AdapterView<*>?, view: View, position: Int, id: Long ->
             if(requireActivity() is UserLoggedActivity) {
                 val item = listView.getAdapter().getItem(position)
                 val intent = Intent(activity, ProductWindowLoggedActivity::class.java)

@@ -7,18 +7,13 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 
-class ItemAdapter(private val context: Context?, val data: ArrayList<Item>) : BaseAdapter() {
-
+class News_Adapter(private val context: Context?, val data: ArrayList<Item>) : BaseAdapter() {
     override fun getCount(): Int {
         return data.size
     }
 
     override fun getItem(position: Int): Any {
         return data[position].titolo
-    }
-
-    fun getTipologia(position: Int): Any {
-        return data[position].tipologia
     }
 
     override fun getItemId(position: Int): Long {
@@ -28,21 +23,18 @@ class ItemAdapter(private val context: Context?, val data: ArrayList<Item>) : Ba
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
 
         var newView = convertView
-        if(convertView == null)
-            newView = LayoutInflater.from(context).inflate(R.layout.item_adapter, parent,false)
+        if (convertView == null)
+            newView = LayoutInflater.from(context).inflate(R.layout.news_adapter, parent, false)
 
-        if(newView!= null) {
-            val itemTitolo = newView.findViewById<TextView>(R.id.Titolo)
-            val itemAutore = newView.findViewById<TextView>(R.id.Autore)
-            val itemTipologia = newView.findViewById<TextView>(R.id.Tipologia)
+        if (newView != null) {
+            val itemTitolo = newView.findViewById<TextView>(R.id.new_titolo)
+            val itemTipologia = newView.findViewById<TextView>(R.id.new_tipo)
 
             itemTitolo.text = data[position].titolo
-            itemAutore.text = data[position].autore
             itemTipologia.text = data[position].tipologia
 
         }
 
         return newView
     }
-
 }

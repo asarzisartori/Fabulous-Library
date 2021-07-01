@@ -21,16 +21,13 @@ class SignInActivity : AppCompatActivity() {
     }
 
     fun Registrate(v: View) {
+
         val name = findViewById<EditText>(R.id.nameField).text.toString()
         val email = findViewById<EditText>(R.id.emailField).text.toString()
         val pass = findViewById<EditText>(R.id.passwordText).text.toString()
 
         if (name.isEmpty()) {
             findViewById<EditText>(R.id.nameField).error = getString(R.string.invalid_username)
-            return
-        }
-        if (checkName(name)== true) {
-            findViewById<EditText>(R.id.nameField).error = "Username già in utilizzo"
             return
         }
 
@@ -40,7 +37,7 @@ class SignInActivity : AppCompatActivity() {
         }
 
         if (!isNotValidPassword(pass)) {
-            findViewById<EditText>(R.id.passwordText).error = getString(R.string.invalid_password)
+            findViewById<EditText>(R.id.passwordText).error = "Password must have at least 8 characters!"
             return
         }
 
@@ -50,13 +47,13 @@ class SignInActivity : AppCompatActivity() {
         }
 
         if (!isNotValidEmail(email)) {
-            findViewById<EditText>(R.id.emailField).error = getString(R.string.invalid_email)
+            findViewById<EditText>(R.id.emailField).error = "Choose a valid email!"
             return
         }
 
         val Users = FirebaseDatabase.getInstance().getReference("Users").child("nome").get()
         if (Users.equals(name)) {
-            Toast.makeText(applicationContext, "User already exists", Toast.LENGTH_LONG).show()
+            findViewById<EditText>(R.id.nameField).error = "Username already used!"
             return
         }
 
@@ -68,11 +65,11 @@ class SignInActivity : AppCompatActivity() {
                     FirebaseDatabase.getInstance().getReference("Users")
                         .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
                         .setValue(user)
-                    Toast.makeText(applicationContext, "Success", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Registration completed", Toast.LENGTH_LONG).show()
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 } else {
-                    Toast.makeText(applicationContext, "Error", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Error in registration", Toast.LENGTH_LONG).show()
                 }
 
             }
@@ -105,8 +102,6 @@ class SignInActivity : AppCompatActivity() {
                     val username = iterUser!!.nome
                     if (name == username){
                       checked = true
-                    Toast.makeText(applicationContext, "Trovato", Toast.LENGTH_LONG).show()
-
                     }
                     else {
                         checked =  false
@@ -114,9 +109,10 @@ class SignInActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onCancelled(error: DatabaseError) {}
+            override fun onCancelled(error: DatabaseError) { }
         })
 
         return checked
     }
+
 }

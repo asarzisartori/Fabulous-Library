@@ -10,7 +10,6 @@ import android.widget.ListView
 import androidx.fragment.app.Fragment
 import com.google.firebase.database.*
 
-
 class List_book_frag : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -35,7 +34,7 @@ class List_book_frag : Fragment() {
         })
 
         listView.setOnItemClickListener {
-                parent: AdapterView<*>?, view: View, position: Int, id: Long ->
+            parent: AdapterView<*>?, view: View, position: Int, id: Long ->
             if(requireActivity() is UserLoggedActivity) {
                 val item = listView.getAdapter().getItem(position)
                 val intent = Intent(activity, ProductWindowLoggedActivity::class.java)

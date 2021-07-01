@@ -6,10 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.view.get
-import androidx.fragment.app.commit
-import androidx.fragment.app.replace
 import com.google.firebase.database.FirebaseDatabase
+import java.util.*
 
 class Add_frag : Fragment(), AdapterView.OnItemSelectedListener {
 
@@ -30,26 +28,24 @@ class Add_frag : Fragment(), AdapterView.OnItemSelectedListener {
             val item_descrizione = view.findViewById<EditText>(R.id.descriptionA).text.toString()
 
             if(item_titolo.isEmpty()){
-                view.findViewById<EditText>(R.id.titleA).error = getString(R.string.invalid_username)
+                view.findViewById<EditText>(R.id.titleA).error = getString(R.string.invalid_title)
             } else {
                 if (item_autore.isEmpty()) {
-                    view.findViewById<EditText>(R.id.authorA).error = getString(R.string.invalid_username)
+                    view.findViewById<EditText>(R.id.authorA).error = getString(R.string.invalid_author)
                 } else {
                     if (item_genere.isEmpty()) {
-                        view.findViewById<EditText>(R.id.genereA).error =
-                                getString(R.string.invalid_username)
+                        view.findViewById<EditText>(R.id.genereA).error = getString(R.string.invalid_genre)
                         } else {
                             if (item_descrizione.isEmpty()) {
-                                view.findViewById<EditText>(R.id.descriptionA).error =
-                                        getString(R.string.invalid_username)
+                                view.findViewById<EditText>(R.id.descriptionA).error = getString(R.string.invalid_description)
                             } else {
-                                    val item = Item(item_titolo, item_autore, item_genere, item_tipologia, item_descrizione, "False", "Nobody")
-                                    FirebaseDatabase.getInstance().getReference("Item").child(item_tipologia).child(item_titolo).setValue(item).addOnCompleteListener {
-                                        task ->
+                                    val timestamp = Date().time.toString()
+                                    val item = Item(item_titolo, item_autore, item_genere, item_tipologia, item_descrizione, "False", "Nobody", timestamp)
+                                    FirebaseDatabase.getInstance().getReference("Item").child(item_tipologia).child(item_titolo).setValue(item).addOnCompleteListener { task ->
                                                 if (task.isSuccessful) {
-                                                    Toast.makeText(context, "Item Successfully uploaded", Toast.LENGTH_SHORT).show()
+                                                    Toast.makeText(context, "Product successfully uploaded", Toast.LENGTH_SHORT).show()
                                                 } else {
-                                                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                                                    Toast.makeText(context, "Error uploading", Toast.LENGTH_SHORT).show()
                                                 }
                                     }
                                 }

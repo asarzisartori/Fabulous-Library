@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/logo_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Librapp">
-        <activity android:name=".ProductWindowLoggedActivity"></activity>
+        <activity android:name=".ProductWindowLoggedActivity" />
         <activity android:name=".ProductWindowNoLoggedActivity" />
         <activity android:name=".AdminSectionActivity" />
         <activity android:name=".SignInActivity" />

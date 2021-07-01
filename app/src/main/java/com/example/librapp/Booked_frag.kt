@@ -1,11 +1,15 @@
 package com.example.librapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
+import android.widget.AdapterView
 import android.widget.ListView
+import androidx.core.view.get
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -66,6 +70,15 @@ class Booked_frag : Fragment() {
             override fun onCancelled(error: DatabaseError) { }
 
         })
+
+        listView.setOnItemClickListener { parent: AdapterView<*>?, view: View, position: Int, id: Long ->
+            val item = itemAdapter.getItem(position)
+            val item_due = itemAdapter.getTipologia(position)
+            val intent = Intent(activity, ProductWindowLoggedActivity::class.java)
+            intent.putExtra("Titolo", item.toString())
+            intent.putExtra("Tipologia", item_due.toString())
+            startActivity(intent)
+        }
 
         return view
     }

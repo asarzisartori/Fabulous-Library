@@ -15,42 +15,38 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-
-
     fun checkLogin (v: View?) {
-      val email = findViewById<EditText>(R.id.username_view).getText().toString()
-        val pass = findViewById<EditText>(R.id.password_view).getText().toString()
 
-        if(email.isEmpty()){
+        val email = findViewById<EditText>(R.id.username_view).text.toString()
+        val pass = findViewById<EditText>(R.id.password_view).text.toString()
+
+        if(email.isEmpty()) {
             findViewById<EditText>(R.id.username_view).error = getString(R.string.invalid_username)
             return
         }
 
-        if(pass.isEmpty()){
+        if(pass.isEmpty()) {
             findViewById<EditText>(R.id.password_view).error = getString(R.string.invalid_password)
             return
         }
 
         if (!isNotValidEmail(email)) {
-            findViewById<EditText>(R.id.username_view).setError(getString(R.string.invalid_email))
-            Toast.makeText(applicationContext, "Prova", Toast.LENGTH_SHORT).show()
+            findViewById<EditText>(R.id.username_view).error = "Choose a valid email!"
             return
         }
-
 
         if (!isNotValidPassword(pass)) {
-            findViewById<EditText>(R.id.password_view).setError(getString(R.string.invalid_password))
+            findViewById<EditText>(R.id.password_view).error = "Password must have at least 8 characters!"
             return
         }
 
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, pass)
-            .addOnCompleteListener { task ->
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, pass).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val intentLog = Intent(this@MainActivity, UserLoggedActivity::class.java)
                     startActivity(intentLog)
-                    Toast.makeText(applicationContext, "LogInSuccess", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Login Success", Toast.LENGTH_LONG).show()
                 } else {
-                    Toast.makeText(applicationContext, "ErrorLoggingIn", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Login Failed", Toast.LENGTH_LONG).show()
                 }
 
             }
@@ -86,7 +82,5 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this@MainActivity, AdminSectionActivity::class.java)
         startActivity(intent)
     }
-
-
 
 }

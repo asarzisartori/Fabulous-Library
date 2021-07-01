@@ -19,24 +19,20 @@ class PersonalProfile_frag : Fragment() {
         val user = FirebaseAuth.getInstance().currentUser
         val email = user?.email.toString()
         val uid = user?.uid.toString()
-        view.findViewById<TextView>(R.id.textEmail).text = email
-        Toast.makeText(context,uid, Toast.LENGTH_SHORT).show()
+        view.findViewById<TextView>(R.id.textView_email).text = email
         val db: DatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(uid)
         val ciao = FirebaseAuth.getInstance().firebaseAuthSettings.toString()
-        view.findViewById<TextView>(R.id.textView5).text = ciao
 
         db.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user = snapshot.getValue(User::class.java)
                 val name = user?.nome.toString()
                 val password = user?.password.toString()
-                view.findViewById<TextView>(R.id.textUsername).text = name
-                view.findViewById<TextView>(R.id.textPassword).text = password
+                view.findViewById<TextView>(R.id.textView_username).text = name
+                view.findViewById<TextView>(R.id.textView_password).text = password
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
+            override fun onCancelled(error: DatabaseError) { }
 
         })
 

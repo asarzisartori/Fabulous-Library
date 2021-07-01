@@ -25,24 +25,26 @@ class ProductWindowLoggedActivity : AppCompatActivity() {
                 val i = snapshot.getValue(Item::class.java)
                 val titolo = i?.titolo
                 val autore = i?.autore
+                val genere = i?.genere
                 val tipologia = i?.tipologia
                 val descrizione = i?.descrizione
                 var prenotato_state = ""
 
                 if ((i?.prenotato).equals("True")) {
-                    prenotato_state = "Non disponibile"
+                    prenotato_state = "Not Available"
                 }  else {
-                    prenotato_state = "Disponibile"
+                    prenotato_state = "Available"
                 }
 
                 val check = findViewById<TextView>(R.id.textView_State)
                 check.text = prenotato_state
-                if (prenotato_state.equals("Non disponibile")) {
+                if (prenotato_state.equals("Not Available")) {
                     check.setTextColor(Color.RED)
                 } else {
                     check.setTextColor(Color.GREEN)
                 }
 
+                findViewById<TextView>(R.id.TV_Genere).text = genere
                 findViewById<TextView>(R.id.TV_Titolo).text = titolo
                 findViewById<TextView>(R.id.TV_Autore).text = autore
                 findViewById<TextView>(R.id.TV_Tipologia).text = tipologia
@@ -63,10 +65,9 @@ class ProductWindowLoggedActivity : AppCompatActivity() {
                             .child(dataTitolo).child("prenotato").setValue("True")
                         FirebaseDatabase.getInstance().getReference("Item").child(dataTipologia)
                             .child(dataTitolo).child("user").setValue(uid)
-                        Toast.makeText(applicationContext, "Prenotazione effettuata", Toast.LENGTH_SHORT).show()
-
+                        Toast.makeText(applicationContext, "Product succesfully booked", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(applicationContext, "Item non disponibile", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "Product is no longer available", Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -84,16 +85,13 @@ class ProductWindowLoggedActivity : AppCompatActivity() {
                             .child(dataTitolo).child("prenotato").setValue("False")
                         FirebaseDatabase.getInstance().getReference("Item").child(dataTipologia)
                             .child(dataTitolo).child("user").setValue("Nobody")
-                        Toast.makeText(applicationContext, "Restituzione effettuata", Toast.LENGTH_SHORT).show()
-
+                        Toast.makeText(applicationContext, "Restitution success", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(applicationContext, "Item non in possesso", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "Product is not in your booking list", Toast.LENGTH_SHORT).show()
                     }
                 }
 
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
+                override fun onCancelled(error: DatabaseError) { }
 
             })
         }
