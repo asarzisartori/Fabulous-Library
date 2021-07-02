@@ -24,7 +24,7 @@ class Image_button_frag : Fragment() {
         val newsListView = view.findViewById<GridView>(R.id.news_list)
         val newslist: ArrayList<Item> = ArrayList()
         val newsAdapter = News_Adapter(activity,newslist)
-        val date = (Date().time - TimeUnit.MILLISECONDS.convert(60,TimeUnit.SECONDS)).toString()
+        val date = (Date().time - TimeUnit.MILLISECONDS.convert(7,TimeUnit.DAYS)).toString()
 
         FirebaseDatabase.getInstance().getReference("Item/Film").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

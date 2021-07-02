@@ -66,8 +66,7 @@ class SignInActivity : AppCompatActivity() {
                         .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
                         .setValue(user)
                     Toast.makeText(applicationContext, "Registration completed", Toast.LENGTH_LONG).show()
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
+                    onBackPressed()
                 } else {
                     Toast.makeText(applicationContext, "Error in registration", Toast.LENGTH_LONG).show()
                 }

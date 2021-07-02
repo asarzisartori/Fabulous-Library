@@ -1,13 +1,11 @@
 package com.example.librapp
 
 import android.os.Bundle
-import android.text.TextUtils.replace
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 
@@ -32,6 +30,7 @@ class UserLoggedActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             0 -> {
                 supportFragmentManager.commit {
                     setReorderingAllowed(true)
+                    addToBackStack(null)
                     replace<Image_button_frag>(R.id.fragment_container_userlogged)
                 }
             }
@@ -39,6 +38,7 @@ class UserLoggedActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             1 -> {
                 supportFragmentManager.commit {
                     setReorderingAllowed(true)
+                    addToBackStack(null)
                     replace<PersonalProfile_frag>(R.id.fragment_container_userlogged)
                 }
             }
@@ -46,6 +46,7 @@ class UserLoggedActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             2 -> {
                 supportFragmentManager.commit {
                     setReorderingAllowed(true)
+                    addToBackStack(null)
                     replace<Booked_frag>(R.id.fragment_container_userlogged)
                 }
             }

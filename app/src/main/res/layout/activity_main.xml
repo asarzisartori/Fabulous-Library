@@ -11,8 +11,10 @@
         android:id="@+id/propic_view"
         android:layout_width="146dp"
         android:layout_height="139dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/title_view"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/logo_app" />
@@ -25,7 +27,9 @@
         android:text="@string/librapp"
         android:textSize="36sp"
         android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/username_view"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/propic_view" />
 
@@ -33,10 +37,13 @@
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
         android:onClick="checkLogin"
         android:text="@string/login"
+        app:layout_constraintBottom_toTopOf="@+id/registration_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_view" />
 
@@ -44,9 +51,9 @@
         android:id="@+id/registration_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
         android:onClick="openSignIn"
         android:text="@string/registrazione"
+        app:layout_constraintBottom_toTopOf="@+id/admin_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/free_access_button"
@@ -56,6 +63,7 @@
         android:id="@+id/free_access_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:onClick="openFreeAccess"
         android:text="@string/accesso_libero"
         app:layout_constraintBaseline_toBaselineOf="@+id/registration_button"
@@ -67,11 +75,15 @@
         android:id="@+id/admin_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
         android:background="@color/white"
         android:onClick="openAdminSection"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registration_button"
         app:srcCompat="@drawable/admin_button" />
 
     <EditText
@@ -83,7 +95,9 @@
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/password_view"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_view" />
 
@@ -96,7 +110,9 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/login_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username_view" />
 

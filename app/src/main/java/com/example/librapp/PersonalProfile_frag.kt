@@ -1,15 +1,20 @@
 package com.example.librapp
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import java.util.*
 
 
 class PersonalProfile_frag : Fragment() {
@@ -21,7 +26,6 @@ class PersonalProfile_frag : Fragment() {
         val uid = user?.uid.toString()
         view.findViewById<TextView>(R.id.textView_email).text = email
         val db: DatabaseReference = FirebaseDatabase.getInstance().getReference("Users").child(uid)
-        val ciao = FirebaseAuth.getInstance().firebaseAuthSettings.toString()
 
         db.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -36,6 +40,12 @@ class PersonalProfile_frag : Fragment() {
 
         })
 
+        val bottone = view.findViewById<Button>(R.id.button_logout)
+        bottone.setOnClickListener {
+            activity?.finish()
+        }
+
         return view
     }
+
 }
