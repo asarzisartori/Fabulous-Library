@@ -17,9 +17,15 @@ class Booked_frag : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val uid = FirebaseAuth.getInstance().currentUser?.uid.toString()
+
         val view = inflater.inflate(R.layout.fragment_booked_frag, container, false)
-        var listView = view.findViewById<ListView>(R.id.listview_Booked)
+        return view
+    }
+
+        override fun onStart() {
+            super.onStart()
+            val uid = FirebaseAuth.getInstance().currentUser?.uid.toString()
+            var listView = view?.findViewById<ListView>(R.id.listview_Booked)
         val itemList: ArrayList<Item> = ArrayList()
         val itemAdapter = ItemAdapter(activity, itemList)
 
@@ -28,7 +34,7 @@ class Booked_frag : Fragment() {
                 for (itemSnap: DataSnapshot in snapshot.getChildren()) {
                     itemList.add(itemSnap.getValue(Item::class.java)!!)
                 }
-                listView.adapter = itemAdapter
+                listView?.adapter = itemAdapter
             }
 
             override fun onCancelled(error: DatabaseError) { }
@@ -40,7 +46,7 @@ class Booked_frag : Fragment() {
                 for (itemSnap: DataSnapshot in snapshot.getChildren()) {
                     itemList.add(itemSnap.getValue(Item::class.java)!!)
                 }
-                listView.adapter = itemAdapter
+                listView?.adapter = itemAdapter
             }
 
             override fun onCancelled(error: DatabaseError) { }
@@ -52,7 +58,7 @@ class Booked_frag : Fragment() {
                 for (itemSnap: DataSnapshot in snapshot.getChildren()) {
                     itemList.add(itemSnap.getValue(Item::class.java)!!)
                 }
-                listView.adapter = itemAdapter
+                listView?.adapter = itemAdapter
             }
 
             override fun onCancelled(error: DatabaseError) { }
@@ -64,14 +70,14 @@ class Booked_frag : Fragment() {
                 for (itemSnap: DataSnapshot in snapshot.getChildren()) {
                     itemList.add(itemSnap.getValue(Item::class.java)!!)
                 }
-                listView.adapter = itemAdapter
+                listView?.adapter = itemAdapter
             }
 
             override fun onCancelled(error: DatabaseError) { }
 
         })
 
-        listView.setOnItemClickListener { parent: AdapterView<*>?, view: View, position: Int, id: Long ->
+        listView?.setOnItemClickListener { parent: AdapterView<*>?, view: View, position: Int, id: Long ->
             val item = itemAdapter.getItem(position)
             val item_due = itemAdapter.getTipologia(position)
             val intent = Intent(activity, ProductWindowLoggedActivity::class.java)
@@ -80,6 +86,5 @@ class Booked_frag : Fragment() {
             startActivity(intent)
         }
 
-        return view
     }
 }
