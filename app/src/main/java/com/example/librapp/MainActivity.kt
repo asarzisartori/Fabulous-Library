@@ -48,8 +48,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(applicationContext, "Login Failed", Toast.LENGTH_LONG).show()
                 }
-
-            }
+        }
     }
 
     private fun isNotValidPassword(pass: String): Boolean {

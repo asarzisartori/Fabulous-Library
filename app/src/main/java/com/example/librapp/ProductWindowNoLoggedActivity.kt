@@ -35,4 +35,5 @@ class ProductWindowNoLoggedActivity : AppCompatActivity() {
 
         })
     }
+
 }

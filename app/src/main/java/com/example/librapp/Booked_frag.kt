@@ -16,8 +16,6 @@ import com.google.firebase.database.*
 class Booked_frag : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-
         val view = inflater.inflate(R.layout.fragment_booked_frag, container, false)
         return view
     }
@@ -26,8 +24,8 @@ class Booked_frag : Fragment() {
             super.onStart()
             val uid = FirebaseAuth.getInstance().currentUser?.uid.toString()
             var listView = view?.findViewById<ListView>(R.id.listview_Booked)
-        val itemList: ArrayList<Item> = ArrayList()
-        val itemAdapter = ItemAdapter(activity, itemList)
+            val itemList: ArrayList<Item> = ArrayList()
+            val itemAdapter = ItemAdapter(activity, itemList)
 
         FirebaseDatabase.getInstance().getReference("Item/Film").orderByChild("user").equalTo(uid).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -85,6 +83,6 @@ class Booked_frag : Fragment() {
             intent.putExtra("Tipologia", item_due.toString())
             startActivity(intent)
         }
-
     }
+
 }

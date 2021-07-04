@@ -28,7 +28,7 @@ class List_audiobook_frag : Fragment() {
                 listView.adapter = itemAdapter
             }
 
-            override fun onCancelled(error: DatabaseError) {}
+            override fun onCancelled(error: DatabaseError) { }
 
         })
 

@@ -30,7 +30,6 @@ class UserLoggedActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             0 -> {
                 supportFragmentManager.commit {
                     setReorderingAllowed(true)
-                    addToBackStack(null)
                     replace<Image_button_frag>(R.id.fragment_container_userlogged)
                 }
             }
@@ -54,4 +53,5 @@ class UserLoggedActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) { }
+
 }

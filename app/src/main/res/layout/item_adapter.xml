@@ -19,14 +19,14 @@
         android:layout_gravity="center_vertical"
         android:layout_weight="0.5"
         android:orientation="vertical"
-        android:padding="12dp"
+        android:padding="15dp"
         >
 
         <TextView
             android:id="@+id/Titolo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:text="TextView" />
 
@@ -34,7 +34,7 @@
             android:id="@+id/Autore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="italic"
             android:textColor="@color/orangeB"
             android:text="TextView" />
@@ -42,6 +42,7 @@
 
     <TextView
         android:id="@+id/Tipologia"
+        android:textSize="13sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"

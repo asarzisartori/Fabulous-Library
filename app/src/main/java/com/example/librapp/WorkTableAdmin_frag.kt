@@ -26,4 +26,5 @@ class WorkTableAdmin_frag : Fragment() {
 
         return view
     }
+
 }

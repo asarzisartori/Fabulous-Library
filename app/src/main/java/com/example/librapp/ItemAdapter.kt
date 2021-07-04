@@ -26,7 +26,6 @@ class ItemAdapter(private val context: Context?, val data: ArrayList<Item>) : Ba
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
-
         var newView = convertView
         if(convertView == null)
             newView = LayoutInflater.from(context).inflate(R.layout.item_adapter, parent,false)
@@ -39,7 +38,6 @@ class ItemAdapter(private val context: Context?, val data: ArrayList<Item>) : Ba
             itemTitolo.text = data[position].titolo
             itemAutore.text = data[position].autore
             itemTipologia.text = data[position].tipologia
-
         }
 
         return newView

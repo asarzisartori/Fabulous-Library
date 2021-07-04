@@ -13,6 +13,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class ProductWindowLoggedActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_window_logged)
@@ -61,10 +62,8 @@ class ProductWindowLoggedActivity : AppCompatActivity() {
                     val itemprenotato = snapshot.getValue(Item::class.java)
                     val prenotato = itemprenotato?.prenotato.toString()
                     if (prenotato == "False") {
-                        FirebaseDatabase.getInstance().getReference("Item").child(dataTipologia)
-                            .child(dataTitolo).child("prenotato").setValue("True")
-                        FirebaseDatabase.getInstance().getReference("Item").child(dataTipologia)
-                            .child(dataTitolo).child("user").setValue(uid)
+                        FirebaseDatabase.getInstance().getReference("Item").child(dataTipologia).child(dataTitolo).child("prenotato").setValue("True")
+                        FirebaseDatabase.getInstance().getReference("Item").child(dataTipologia).child(dataTitolo).child("user").setValue(uid)
                         Toast.makeText(applicationContext, "Product succesfully booked", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(applicationContext, "Product is no longer available", Toast.LENGTH_SHORT).show()
@@ -75,16 +74,15 @@ class ProductWindowLoggedActivity : AppCompatActivity() {
 
             })
         }
+
         findViewById<Button>(R.id.button_Restituisci).setOnClickListener {
             FirebaseDatabase.getInstance().getReference("Item").child(dataTipologia).child(dataTitolo).addListenerForSingleValueEvent(object: ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val itemprenotato = snapshot.getValue(Item::class.java)
                     val useritem = itemprenotato?.user.toString()
                     if (useritem == uid) {
-                        FirebaseDatabase.getInstance().getReference("Item").child(dataTipologia)
-                            .child(dataTitolo).child("prenotato").setValue("False")
-                        FirebaseDatabase.getInstance().getReference("Item").child(dataTipologia)
-                            .child(dataTitolo).child("user").setValue("Nobody")
+                        FirebaseDatabase.getInstance().getReference("Item").child(dataTipologia).child(dataTitolo).child("prenotato").setValue("False")
+                        FirebaseDatabase.getInstance().getReference("Item").child(dataTipologia).child(dataTitolo).child("user").setValue("Nobody")
                         Toast.makeText(applicationContext, "Restitution success", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(applicationContext, "Product is not in your booking list", Toast.LENGTH_SHORT).show()
@@ -95,6 +93,6 @@ class ProductWindowLoggedActivity : AppCompatActivity() {
 
             })
         }
-
     }
+
 }

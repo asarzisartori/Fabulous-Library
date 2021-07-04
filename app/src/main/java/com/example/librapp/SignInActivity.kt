@@ -62,9 +62,7 @@ class SignInActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val user = User(name, email, pass)
-                    FirebaseDatabase.getInstance().getReference("Users")
-                        .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
-                        .setValue(user)
+                    FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().currentUser?.uid.toString()).setValue(user)
                     Toast.makeText(applicationContext, "Registration completed", Toast.LENGTH_LONG).show()
                     onBackPressed()
                 } else {
@@ -101,8 +99,7 @@ class SignInActivity : AppCompatActivity() {
                     val username = iterUser!!.nome
                     if (name == username){
                       checked = true
-                    }
-                    else {
+                    } else {
                         checked =  false
                     }
                 }

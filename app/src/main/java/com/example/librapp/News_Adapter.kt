@@ -21,7 +21,6 @@ class News_Adapter(private val context: Context?, val data: ArrayList<Item>) : B
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
-
         var newView = convertView
         if (convertView == null)
             newView = LayoutInflater.from(context).inflate(R.layout.news_adapter, parent, false)
@@ -37,4 +36,5 @@ class News_Adapter(private val context: Context?, val data: ArrayList<Item>) : B
 
         return newView
     }
+
 }

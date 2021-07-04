@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:clickable="true"
     tools:context=".Image_button_frag">
 
     <ImageButton
@@ -128,9 +130,9 @@
         android:layout_width="0dp"
         android:layout_height="250dp"
         android:layout_marginTop="16dp"
-        android:horizontalSpacing="10dp"
+        android:horizontalSpacing="15dp"
         android:numColumns="auto_fit"
-        android:verticalSpacing="10dp"
+        android:verticalSpacing="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView26" />

@@ -29,7 +29,7 @@ class List_book_frag : Fragment() {
                 listView.adapter = itemAdapter
             }
 
-            override fun onCancelled(error: DatabaseError) {}
+            override fun onCancelled(error: DatabaseError) { }
 
         })
 
